@@ -51,18 +51,25 @@ namespace HomeSick
         
         private void AddTreatmentFor_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.RemedyTreatmentforText = AddTreatmentFor.Text.ToUpper();
+            this.RemedyTreatmentforText = " " + AddTreatmentFor.Text.ToUpper();
         }
 
         
         private void AddSubmit_Click(object sender, RoutedEventArgs e)
         {
-           
-            CheckAddforMultipleTreatments();
-            InputClearAll();
-            if (getId != 0)
+            if (string.IsNullOrEmpty(RemedyTitleText) == true || string.IsNullOrEmpty(RemedyNoteText) == true || string.IsNullOrEmpty(RemedyTreatmentforText) == true)
             {
-                repo.Delete(toDeletefromId);
+                MessageBox.Show("You must fill in all fields before submitting");
+            }
+            else
+            {
+                CheckAddforMultipleTreatments();
+                InputClearAll();
+                if (getId != 0)
+                {
+                    repo.Delete(toDeletefromId);
+                }
+                TreatmentComboBox.ItemsSource = repo.GetTreatments();
             }
         }
 
@@ -71,6 +78,7 @@ namespace HomeSick
             AddTitle.Clear();
             AddNote.Clear();
             AddTreatmentFor.Clear();
+            RemedyFields.Content = "Add a Remedy";
         }
 
         private void CheckAddforMultipleTreatments()
@@ -100,6 +108,7 @@ namespace HomeSick
             {   
             }
            RemedyList.DataContext = repo.GetByTreatmentFor(specifiedTreatment);
+           InputClearAll();
           
         }
 
@@ -127,6 +136,7 @@ namespace HomeSick
             AddTitle.Text = editSelection.RemedyTitle;
             AddTreatmentFor.Text = editSelection.RemedyTreatmentFor;
             EditButton.Visibility = Visibility.Visible;
+            RemedyFields.Content = "Edit this Remedy";
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -134,6 +144,7 @@ namespace HomeSick
             repo.Delete(toDeletefromId);
             InputClearAll();
             EditButton.Visibility = Visibility.Collapsed;
+            TreatmentComboBox.ItemsSource = repo.GetTreatments();
         }
 
     }

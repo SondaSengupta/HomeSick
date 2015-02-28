@@ -4,7 +4,7 @@
         Title="MainWindow" Height="546.341" Width="732.317">
     <Grid>
         <Label Content="HomeSick: Store Remedies that Work for You" HorizontalAlignment="Left" Margin="127,10,0,0" VerticalAlignment="Top" Width="342"/>
-        <Label Content="Add a Remedy" HorizontalAlignment="Left" Height="24" Margin="7,36,0,0" VerticalAlignment="Top" Width="198" Background="#FF8182A0"/>
+        <Label x:Name="RemedyFields" Content="Add a Remedy" HorizontalAlignment="Left" Height="24" Margin="7,36,0,0" VerticalAlignment="Top" Width="198" Background="#FF8182A0"/>
         <Label Content="Title" HorizontalAlignment="Left" Height="23" Margin="10,60,0,0" VerticalAlignment="Top" Width="48"/>
         <Label Content="Note" HorizontalAlignment="Left" Height="28" Margin="10,84,0,0" VerticalAlignment="Top" Width="37"/>
         <Label Content="Treatment For:" HorizontalAlignment="Left" Height="28" Margin="10,193,0,0" VerticalAlignment="Top" Width="95"/>
