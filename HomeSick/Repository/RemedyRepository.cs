@@ -48,12 +48,27 @@ namespace HomeSick.Repository
             _dbContext.SaveChanges();
         }
 
-        public IEnumerable<Model.RemedyItem> GetByTreatmentFor(string treatmentfor)
+        public IEnumerable<Model.RemedyItem> GetByTreatmentFor(object treatmentfor)
         {
             query = from Remedies in _dbContext.Remedies
                         where  Remedies.RemedyTreatmentFor == treatmentfor
                         select Remedies;
             return query.ToList();
+        }
+
+        public List<string> GetTreatments()
+        {
+            var treatmentQuery = from Remedies in _dbContext.Remedies
+                        select Remedies.RemedyTreatmentFor;
+            return treatmentQuery.Distinct().ToList();
+        }
+
+        public RemedyItem GetById(int id)
+        {
+            var querybyID = from Remedies in _dbContext.Remedies
+                            where Remedies.RemedyItemId == id
+                            select Remedies;
+            return querybyID.First();
         }
 
         public void Dispose()

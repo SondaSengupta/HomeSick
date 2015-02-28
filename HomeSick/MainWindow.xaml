@@ -11,23 +11,24 @@
         <TextBox x:Name="AddTitle" HorizontalAlignment="Left" Height="18" Margin="63,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" TextChanged="AddTitle_TextChanged"/>
         <TextBox x:Name="AddNote" HorizontalAlignment="Left" Height="88" Margin="13,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" TextChanged="AddNote_TextChanged"/>
         <Label Content="Remedies Past You used to Feel Better" HorizontalAlignment="Left" Margin="213,36,0,0" VerticalAlignment="Top" Width="476" Background="#FF0A5B68" Foreground="#FFF1E5E5"/>
-        <ComboBox x:Name="TreatmentComboBox" HorizontalAlignment="Left" Margin="331,65,0,0" VerticalAlignment="Top" Width="125" />
+        <ComboBox x:Name="TreatmentComboBox" HorizontalAlignment="Left" Margin="331,65,0,0" VerticalAlignment="Top" Width="125" SelectionChanged="selectedTreatment" ItemsSource="{Binding NotifyOnSourceUpdated=True}">
+        </ComboBox>
         <Label Content="Sick with:" HorizontalAlignment="Left" Margin="258,63,0,0" VerticalAlignment="Top" Width="73"/>
-        <ListBox x:Name="RemedyList" HorizontalAlignment="Left" Height="307" Margin="239,143,0,0" VerticalAlignment="Top" Width="450" ItemsSource="{Binding NotifyOnSourceUpdated=True}">
+        <ListBox x:Name="RemedyList" HorizontalAlignment="Left" Height="307" Margin="239,143,0,0" VerticalAlignment="Top" Width="450" ItemsSource="{Binding NotifyOnSourceUpdated=True}" SelectionChanged="RemedyList_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                        <Label Content="{Binding RemedyTreatmentFor}" Width="100"></Label>
-                        <Label Content="{Binding RemedyTitle}" Width="100"></Label>
-                        <TextBlock Width="479" Text="{Binding RemedyNote}" ></TextBlock>
+                        <Label Content="{Binding RemedyTreatmentFor, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Width="100"></Label>
+                        <Label Content="{Binding RemedyTitle, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" Width="100"></Label>
+                        <TextBlock Width="479" Text="{Binding RemedyNote, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}" ></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="Your Remedies" HorizontalAlignment="Left" Margin="239,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.381,-0.247" Width="198"/>
+        <Label Content="Your Remedies" HorizontalAlignment="Left" Margin="239,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.381,-0.247" Width="198"/>
         <Button x:Name="AddSubmit" Content="Submit" HorizontalAlignment="Left" Margin="109,259,0,0" VerticalAlignment="Top" Width="75" Click="AddSubmit_Click"/>
-        <Button x:Name="EditButton" Content="Edit a Remedy" HorizontalAlignment="Left" Margin="6,259,0,0" VerticalAlignment="Top" Width="98"/>
+        <Button x:Name="EditButton" Visibility="Collapsed" Content="Delete Remedy" HorizontalAlignment="Left" Margin="6,259,0,0" VerticalAlignment="Top" Width="98" Click="DeleteButton_Click"/>
         <TextBox x:Name="AddTreatmentFor" HorizontalAlignment="Left" Height="23" Margin="63,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" TextChanged="AddTreatmentFor_TextChanged"/>
-
+        <Button x:Name="ShowAllRemedies" Content="Show All Remedies" HorizontalAlignment="Left" Margin="580,118,0,0" VerticalAlignment="Top" Width="109" Click="ShowAllRemedies_Click"/>
     </Grid>
 </Window>

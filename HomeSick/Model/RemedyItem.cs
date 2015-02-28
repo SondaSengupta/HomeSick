@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace HomeSick.Model
 {
-    public class RemedyItem
+    public class RemedyItem: INotifyPropertyChanged
     {
         public int RemedyItemId { get; set; }
         public string RemedyTitle { get; set; }
@@ -26,5 +26,7 @@ namespace HomeSick.Model
             this.RemedyNote = RemedyNote;
             this.RemedyTreatmentFor = RemedyTreatmentFor;
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
