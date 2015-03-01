@@ -33,13 +33,14 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <Label Content="Your Remedies" HorizontalAlignment="Left" Margin="229,79,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.381,-0.247" Width="198" FontWeight="Bold" FontSize="14"/>
-            <Button x:Name="AddSubmit" Content="Submit" HorizontalAlignment="Left" Margin="130,290,0,0" VerticalAlignment="Top" Width="75" Click="AddSubmit_Click" FontWeight="Bold" Background="#FF271025" Foreground="#FFF3EBEB"/>
-            <Button x:Name="EditButton" Visibility="Visible" Content="Delete Remedy" HorizontalAlignment="Left" Margin="15,289,0,0" VerticalAlignment="Top" Width="98" Click="DeleteButton_Click" Background="#FF271025" Foreground="#FFF3EBEB"/>
+            <Button x:Name="AddSubmit" Content="Submit" HorizontalAlignment="Left" Margin="154,290,0,0" VerticalAlignment="Top" Width="51" Click="AddSubmit_Click" FontWeight="Bold" Background="#FF271025" Foreground="#FFF3EBEB"/>
+            <Button x:Name="DeleteButton" Visibility="Visible" Content="Delete Remedy" HorizontalAlignment="Left" Margin="13,290,0,0" VerticalAlignment="Top" Width="91" Click="DeleteButton_Click" Background="#FF271025" Foreground="#FFF3EBEB"/>
             <TextBox x:Name="AddTreatmentFor" HorizontalAlignment="Left" Height="23" Margin="13,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" TextChanged="AddTreatmentFor_TextChanged"/>
             <Button x:Name="ShowAllRemedies" Content="Show All Remedies" HorizontalAlignment="Left" Margin="547,113,0,0" VerticalAlignment="Top" Width="132" Click="ShowAllRemedies_Click" FontWeight="Bold" Background="#FF090725" Foreground="#FFEEE7E7" Height="30"/>
             <Image x:Name="RemedyImage" HorizontalAlignment="Left" Height="135" Margin="13,315,0,0" VerticalAlignment="Top" Width="192" Source="{Binding}"/>
-            <TextBox x:Name="ImagePathTextBox" HorizontalAlignment="Left" Height="23" Margin="13,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" TextChanged="ImagePathTextBox_TextChanged"/>
+            <TextBox x:Name="ImagePathTextBox" HorizontalAlignment="Left" Height="23" Margin="13,250,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="122" TextChanged="ImagePathTextBox_TextChanged"/>
             <Button x:Name="ImagePath" Content="Image Path" HorizontalAlignment="Left" Margin="140,253,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="1.577,1.117" Click="ImagePath_Click"/>
+            <Button x:Name="ClearButton" Content="Clear" HorizontalAlignment="Left" Margin="107,290,0,0" VerticalAlignment="Top" Width="45" Click="ClearButton_Click" Background="#FF271025" Foreground="#FFF3EBEB"/>
         </Grid>
     </Viewbox>
 </Window>

@@ -14,17 +14,19 @@ namespace HomeSick.Model
         public string RemedyTitle { get; set; }
         public string RemedyNote { get; set; }
         public string RemedyTreatmentFor { get; set; }
+        public string RemedyImagePath { get; set; }
 
         public RemedyItem()
         {
 
         }
 
-        public RemedyItem(string RemedyTitle, string RemedyNote, string RemedyTreatmentFor)
+        public RemedyItem(string RemedyTitle, string RemedyNote, string RemedyTreatmentFor, string RemedyImagePath = "cat.jpg")
         {
             this.RemedyTitle = RemedyTitle;
             this.RemedyNote = RemedyNote;
             this.RemedyTreatmentFor = RemedyTreatmentFor;
+            this.RemedyImagePath = RemedyImagePath;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

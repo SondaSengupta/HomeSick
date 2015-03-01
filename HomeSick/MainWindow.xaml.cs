@@ -30,6 +30,7 @@ namespace HomeSick
         RemedyItem toDeletefromId;
         RemedyItem editSelection;
         string[] MultipleTreatments;
+        public string ImagePathstring { get; set; }
 
         public MainWindow()
         {
@@ -79,7 +80,9 @@ namespace HomeSick
             AddNote.Clear();
             AddTreatmentFor.Clear();
             RemedyFields.Content = "Add a Remedy";
-            EditButton.Visibility = Visibility.Collapsed;
+            ImagePathTextBox.Clear();
+            RemedyImage.Source = null;
+            DeleteButton.Visibility = Visibility.Collapsed;
         }
 
         private void CheckAddforMultipleTreatments()
@@ -89,12 +92,12 @@ namespace HomeSick
                 MultipleTreatments = RemedyTreatmentforText.Split(',');
                 for (int i = 0; i < MultipleTreatments.Length; i++)
                 {
-                    repo.Add(new RemedyItem(RemedyTitleText, RemedyNoteText, MultipleTreatments[i]));
+                    repo.Add(new RemedyItem(RemedyTitleText, RemedyNoteText, MultipleTreatments[i], ImagePathstring));
                 }
             }
             else
             {
-                repo.Add(new RemedyItem(RemedyTitleText, RemedyNoteText, RemedyTreatmentforText));
+                repo.Add(new RemedyItem(RemedyTitleText, RemedyNoteText, RemedyTreatmentforText, ImagePathstring));
             }
         }
 
@@ -135,35 +138,67 @@ namespace HomeSick
             AddNote.Text = editSelection.RemedyNote;
             AddNote.Text = editSelection.RemedyNote;
             AddTitle.Text = editSelection.RemedyTitle;
+            ImagePathTextBox.Text = editSelection.RemedyImagePath;
             AddTreatmentFor.Text = editSelection.RemedyTreatmentFor;
-            EditButton.Visibility = Visibility.Visible;
+            DeleteButton.Visibility = Visibility.Visible;
             RemedyFields.Content = "Edit this Remedy";
+            ShowImage(editSelection.RemedyImagePath);
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {  
             repo.Delete(toDeletefromId);
             InputClearAll();
-            EditButton.Visibility = Visibility.Collapsed;
+            DeleteButton.Visibility = Visibility.Collapsed;
             TreatmentComboBox.ItemsSource = repo.GetTreatments();
         }
+
 
         private void ImagePath_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.ShowDialog();
             ImagePathTextBox.Text = dlg.FileName;
-            string ImagePathstring = dlg.FileName;
-            Uri imageUri = new Uri(ImagePathstring);
-            BitmapImage imageBitmap = new BitmapImage(imageUri);
-            RemedyImage.Source = imageBitmap;
+            this.ImagePathstring = ImagePathTextBox.Text;
+            if (string.IsNullOrEmpty(ImagePathstring) == true || ImagePathstring.Contains("jpg") == false)
+            {
+                MessageBox.Show("Image Path must be valid with a jpg extension.");
+            }
+            else
+            {
+                ShowImage(ImagePathstring);
+            }   
+        }
+
+        private void ShowImage(string ImageStringPath)
+        {
+            if (ImageStringPath == null)
+            {
+                RemedyImage.Source = null;
+            }
+            else
+            {
+                try
+                {
+                    Uri imageUri = new Uri(ImageStringPath);
+                    BitmapImage imageBitmap = new BitmapImage(imageUri);
+                    RemedyImage.Source = imageBitmap;
+                }
+                catch
+                {
+                    RemedyImage.Source = null;
+                }
+            } 
         }
 
         private void ImagePathTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            this.ImagePathstring = ImagePathTextBox.Text;
         }
 
-
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            InputClearAll();
+        }
     }
 }
