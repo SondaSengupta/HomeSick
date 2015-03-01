@@ -79,6 +79,7 @@ namespace HomeSick
             AddNote.Clear();
             AddTreatmentFor.Clear();
             RemedyFields.Content = "Add a Remedy";
+            EditButton.Visibility = Visibility.Collapsed;
         }
 
         private void CheckAddforMultipleTreatments()
@@ -146,6 +147,23 @@ namespace HomeSick
             EditButton.Visibility = Visibility.Collapsed;
             TreatmentComboBox.ItemsSource = repo.GetTreatments();
         }
+
+        private void ImagePath_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.ShowDialog();
+            ImagePathTextBox.Text = dlg.FileName;
+            string ImagePathstring = dlg.FileName;
+            Uri imageUri = new Uri(ImagePathstring);
+            BitmapImage imageBitmap = new BitmapImage(imageUri);
+            RemedyImage.Source = imageBitmap;
+        }
+
+        private void ImagePathTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
 
     }
 }

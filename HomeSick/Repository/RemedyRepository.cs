@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using HomeSick.Model;
+using System.Windows;
 
 namespace HomeSick.Repository
 {
@@ -36,8 +37,15 @@ namespace HomeSick.Repository
 
         public void Delete(RemedyItem F)
         {
-            _dbContext.Remedies.Remove(F);
-            _dbContext.SaveChanges();
+            if (F == null)
+            {
+                MessageBox.Show("Deleted item not found.");
+            }
+            else
+            {
+                _dbContext.Remedies.Remove(F);
+                _dbContext.SaveChanges();
+            } 
         }
 
         public void Clear()
