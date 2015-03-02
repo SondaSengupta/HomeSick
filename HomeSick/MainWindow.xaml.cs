@@ -141,6 +141,7 @@ namespace HomeSick
             ImagePathTextBox.Text = editSelection.RemedyImagePath;
             AddTreatmentFor.Text = editSelection.RemedyTreatmentFor;
             DeleteButton.Visibility = Visibility.Visible;
+            ClearButton.Visibility = Visibility.Collapsed;
             RemedyFields.Content = "Edit this Remedy";
             ShowImage(editSelection.RemedyImagePath);
         }
@@ -150,6 +151,7 @@ namespace HomeSick
             repo.Delete(toDeletefromId);
             InputClearAll();
             DeleteButton.Visibility = Visibility.Collapsed;
+            ClearButton.Visibility = Visibility.Visible;
             TreatmentComboBox.ItemsSource = repo.GetTreatments();
         }
 

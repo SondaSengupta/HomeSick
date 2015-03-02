@@ -38,9 +38,10 @@
             <TextBox x:Name="AddTreatmentFor" HorizontalAlignment="Left" Height="23" Margin="13,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" TextChanged="AddTreatmentFor_TextChanged"/>
             <Button x:Name="ShowAllRemedies" Content="Show All Remedies" HorizontalAlignment="Left" Margin="547,113,0,0" VerticalAlignment="Top" Width="132" Click="ShowAllRemedies_Click" FontWeight="Bold" Background="#FF090725" Foreground="#FFEEE7E7" Height="30"/>
             <Image x:Name="RemedyImage" HorizontalAlignment="Left" Height="135" Margin="13,315,0,0" VerticalAlignment="Top" Width="192" Source="{Binding}"/>
-            <TextBox x:Name="ImagePathTextBox" HorizontalAlignment="Left" Height="23" Margin="13,250,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="122" TextChanged="ImagePathTextBox_TextChanged"/>
-            <Button x:Name="ImagePath" Content="Image Path" HorizontalAlignment="Left" Margin="140,253,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="1.577,1.117" Click="ImagePath_Click"/>
+            <TextBox x:Name="ImagePathTextBox" HorizontalAlignment="Left" Height="23" Margin="13,264,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="109" TextChanged="ImagePathTextBox_TextChanged"/>
+            <Button x:Name="ImagePath" Content="From Device" HorizontalAlignment="Left" Margin="127,264,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="1.577,1.117" Click="ImagePath_Click" Height="21"/>
             <Button x:Name="ClearButton" Content="Clear" HorizontalAlignment="Left" Margin="107,290,0,0" VerticalAlignment="Top" Width="45" Click="ClearButton_Click" Background="#FF271025" Foreground="#FFF3EBEB"/>
+            <Label x:Name="ImagePathLabel" Content="Add Image Path:" HorizontalAlignment="Left" Height="28" Margin="13,243,0,0" VerticalAlignment="Top" Width="109" FontWeight="Bold"/>
         </Grid>
     </Viewbox>
 </Window>

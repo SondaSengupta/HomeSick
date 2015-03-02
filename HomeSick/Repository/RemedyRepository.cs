@@ -43,8 +43,15 @@ namespace HomeSick.Repository
             }
             else
             {
-                _dbContext.Remedies.Remove(F);
-                _dbContext.SaveChanges();
+                try
+                {
+                    _dbContext.Remedies.Remove(F);
+                    _dbContext.SaveChanges();
+                }
+                catch
+                {
+
+                }
             } 
         }
 
